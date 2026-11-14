@@ -78,6 +78,6 @@ The 16 supplied PNGs are retained alongside optimized WebP files. The UI uses We
 
 ## Deployment and portfolio handoff
 
-`vercel.json` includes the Angular build command, output directory and SPA fallback. Import this repository into Vercel, run the checks above and verify refreshes on nested routes. Source repository: [Samiksha530/kimaya-kids](https://github.com/Samiksha530/kimaya-kids) (private). Live demo: [kimaya-kids.vercel.app](https://kimaya-kids.vercel.app). Production deployment is READY. Add the verified live URL and screenshots after deployment; do not advertise unfinished functionality as production-ready.
+`vercel.json` includes the Angular build command, output directory and SPA fallback. Import this repository into Vercel, run the checks above and verify refreshes on nested routes. Source repository: [Samiksha530/kimaya-kids](https://github.com/Samiksha530/kimaya-kids) (public). Live demo: [kimaya-kids.vercel.app](https://kimaya-kids.vercel.app). Production deployment is READY. Add the verified live URL and screenshots after deployment; do not advertise unfinished functionality as production-ready.
 
 The live storefront and product details were verified in the in-app browser, including a direct product-page refresh. A storefront screenshot was inspected. Full mobile/device and end-to-end checkout testing remain separate verification tasks.
