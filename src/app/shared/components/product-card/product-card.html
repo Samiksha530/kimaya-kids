@@ -1,0 +1,38 @@
+<article class="product-card">
+  <div class="product-photo">
+    <a
+      class="photo-link"
+      [routerLink]="['/products', p().id]"
+      [attr.aria-label]="'View ' + p().name"
+      ><img
+        [src]="'/images/dress-' + p().image + '.webp'"
+        [alt]="p().name"
+        loading="lazy"
+        width="450"
+        height="550"
+    /></a>
+    @if (p().id === 1 || p().id === 5) {
+      <span class="tag">{{ p().id === 1 ? 'STUDIO PICK' : 'NEW ARRIVAL' }}</span>
+    }
+    <button
+      class="heart"
+      (click)="s.toggle(p().id)"
+      [attr.aria-label]="'Save ' + p().name + ' to wishlist'"
+      [attr.aria-pressed]="s.wish().includes(p().id)"
+      [class.saved]="s.wish().includes(p().id)"
+    >
+      {{ s.wish().includes(p().id) ? '♥' : '♡' }}</button><a
+      class="quick"
+      [routerLink]="['/products', p().id]"
+      >Choose size & view details ↗</a
+    >
+  </div>
+  <div class="product-meta">
+    <span>TRADITIONAL · {{ p().color.toUpperCase() }}</span>
+  </div>
+  <a class="product-name" [routerLink]="['/products', p().id]">{{ p().name }}</a>
+  <div class="price">
+    {{ p().price | currency: 'INR' : 'symbol' : '1.0-0' }}
+    <span>6 months – 5 years</span>
+  </div>
+</article>

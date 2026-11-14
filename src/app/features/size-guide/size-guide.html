@@ -1,0 +1,31 @@
+<section class="section inner-page">
+  <p class="eyebrow">BEFORE YOU CHOOSE A SIZE</p>
+  <h1>A comfortable fit</h1>
+  <p>Illustrative measurements in inches. Confirm the final fit with the studio before ordering.</p>
+  <div class="table-scroll">
+    <table>
+      <caption>
+        Kids dress size reference
+      </caption>
+      <thead>
+        <tr>
+          <th>Age</th>
+          <th>Chest</th>
+          <th>Waist</th>
+          <th>Dress length</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of sizes; track row[0]) {
+          <tr>
+            @for (cell of row; track $index) {
+              <td>{{ cell }}</td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <p>Measure around the fullest chest and natural waist without pulling the tape tight.</p>
+  <a routerLink="/custom" class="btn">Ask for a custom fit ↗</a>
+</section>

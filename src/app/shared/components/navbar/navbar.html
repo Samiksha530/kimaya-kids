@@ -1,0 +1,32 @@
+<div class="announcement">
+  A little tradition. A lot of love.
+  <span>Traditional wear for family celebrations</span>
+</div>
+<header>
+  <a class="brand" routerLink="/"
+    ><span class="brand-flower">✿</span
+    ><span>kimaya<span class="brand-kids">K I D S</span></span></a
+  >
+  <nav aria-label="Main navigation">
+    <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Home</a
+    ><a routerLink="/" fragment="collection">Shop All</a
+    ><a routerLink="/" fragment="collection">Traditional <small>NEW</small></a
+    ><a routerLink="/custom">Custom Design</a><a routerLink="/about">Our Story</a
+    ><a routerLink="/contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a routerLink="/" fragment="collection" aria-label="Search collection"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5" />
+        <path d="m16 16 4 4" /></svg></a
+    ><a routerLink="/wishlist" aria-label="Wishlist"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 5c-3-3-7 0-8 2-1-2-5-5-8-2-4 4 1 9 8 15 7-6 12-11 8-15Z" /></svg
+      ><sup>{{ s.wish().length || '' }}</sup></a
+    ><a routerLink="/cart" class="bag" aria-label="Shopping bag"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 7h14l1 14H4L5 7Z M8 8V6a4 4 0 0 1 8 0v2" /></svg
+      ><sup>{{ s.count() }}</sup></a
+    >
+  </div>
+</header>

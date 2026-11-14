@@ -1,0 +1,102 @@
+<section class="section inner-page">
+  <p class="eyebrow">STUDIO TOOLS</p>
+  <h1>Demo dashboard</h1>
+  <p class="notice">Browser-local portfolio demo. No production authentication or customer data.</p>
+  <div class="stats">
+    <div>
+      <b>{{ s.products().length }}</b>Products
+    </div>
+    <div>
+      <b>{{ s.orders().length }}</b>Demo orders
+    </div>
+    <div>
+      <b>{{ s.inquiries().length }}</b>Inquiries
+    </div>
+  </div>
+  <h2>{{ editing() ? 'Edit product' : 'Add product' }}</h2>
+  <form [formGroup]="adminForm" (ngSubmit)="saveProduct()" class="admin-form">
+    <label>Name<input formControlName="name" /></label
+    ><label>Price (₹)<input type="number" formControlName="price" /></label
+    ><label>Stock<input type="number" formControlName="stock" /></label
+    ><label>Collection photo (1–16)<input type="number" formControlName="image" /></label
+    ><label>Colour<input formControlName="color" /></label
+    ><label
+      >Style<select formControlName="type">
+        <option>Frocks</option>
+        <option>Lehengas</option>
+      </select></label
+    ><button class="btn" type="submit" [disabled]="adminForm.invalid">Save product</button>
+    @if (editing()) {
+      <button type="button" (click)="editing.set(0); adminForm.reset()">Cancel editing</button>
+    }
+  </form>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Manage</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of s.products(); track p.id) {
+          <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | currency: 'INR' }}</td>
+            <td>{{ p.stock }}</td>
+            <td>
+              <div class="record-actions">
+                <button (click)="edit(p)">Edit</button
+                ><button class="danger" (click)="deleting.set(p.id)">Delete</button>
+              </div>
+              @if (deleting() === p.id) {
+                <p>Remove this product and its saved bag entries?</p>
+                <button class="danger" (click)="s.removeProduct(p.id); deleting.set(0)">
+                  Confirm removal</button
+                ><button (click)="deleting.set(0)">Keep product</button>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2>Inquiries & appointments</h2>
+  @for (i of s.inquiries(); track i.id) {
+    <article class="record">
+      <b>{{ i.kind }} · {{ i.name }}</b>
+      <p>{{ i.email }} · {{ i.phone }}</p>
+      <p>{{ i.date }} {{ i.time }} {{ i.details }}</p>
+      @if (i.age || i.chest || i.waist || i.length) {
+        <p>
+          Age: {{ i.age || 'Not supplied' }} · Chest: {{ i.chest || '—' }} in · Waist:
+          {{ i.waist || '—' }} in · Length: {{ i.length || '—' }} in
+        </p>
+      }
+      <select
+        aria-label="Inquiry status"
+        [value]="i.status"
+        #statusChoice
+        (change)="status(i.id, statusChoice.value)"
+      >
+        <option>New</option>
+        <option>In progress</option>
+        <option>Resolved</option>
+      </select>
+    </article>
+  } @empty {
+    <p>No inquiries yet.</p>
+  }
+  <h2>Demo orders</h2>
+  @for (o of s.orders(); track o.id) {
+    <article class="record">
+      <b>{{ o.id }} · {{ o.name }}</b>
+      <p>{{ o.details }}</p>
+      <p>{{ o.total | currency: 'INR' }} · {{ o.items.length }} item lines</p>
+    </article>
+  } @empty {
+    <p>No orders yet.</p>
+  }
+</section>

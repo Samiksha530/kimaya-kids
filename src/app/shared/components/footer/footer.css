@@ -1,0 +1,48 @@
+footer {
+  padding: 40px 5.8% 20px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 30px;
+  gap: 20px;
+}
+.footer-top .brand {
+  font-size: 27px;
+}
+.footer-top p,
+.footer-top > a:last-child {
+  font-size: 11px;
+  color: #998b7d;
+  margin: 0;
+}
+.footer-bottom {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #a19487;
+}
+.footer-bottom > div {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 760px) {
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: start;
+    gap: 18px;
+  }
+  .footer-bottom > div {
+    flex-wrap: wrap;
+  }
+}
+:host {
+  display: block;
+}
+.footer-bottom a:hover {
+  text-decoration: underline;
+}

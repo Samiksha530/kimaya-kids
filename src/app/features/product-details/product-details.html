@@ -1,0 +1,51 @@
+<section class="section inner-page">
+  <a routerLink="/" fragment="collection" class="text-link">← Back to the collection</a>
+  @if (product(); as p) {
+    <div class="product-detail-layout">
+      <div>
+        <img
+          class="detail-image"
+          [src]="'/images/dress-' + (image() || p.image) + '.webp'"
+          [alt]="p.name"
+        />
+        <div class="thumbs">
+          @for (i of p.gallery; track i) {
+            <button (click)="image.set(i)">
+              <img [src]="'/images/dress-' + i + '.webp'" alt="Additional dress view" />
+            </button>
+          }
+        </div>
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow">THE TRADITIONAL EDIT</p>
+        <h2>{{ p.name }}</h2>
+        <h3>{{ p.price | currency: 'INR' : 'symbol' : '1.0-0' }}</h3>
+        <p>
+          A festive style from the Traditional collection. Browse the photos for the neckline,
+          border and fastening details. Need a different fit? Request a custom design.
+        </p>
+        <p>
+          <b>Fabric:</b> Brocade-inspired finish; confirm composition with the studio<br /><b
+            >Care:</b
+          >
+          Gentle dry clean recommended<br /><b>Availability:</b> {{ p.stock }} pieces
+        </p>
+        <label
+          >Choose your little one's size<select (change)="size.set(sizeChoice.value)" #sizeChoice>
+            @for (z of sizes; track z) {
+              <option>{{ z }}</option>
+            }
+          </select></label
+        ><button class="btn" [disabled]="p.stock === 0" (click)="s.add(p.id, size())">
+          Add to bag — {{ p.price | currency: 'INR' : 'symbol' : '1.0-0' }}</button
+        ><a class="text-link" routerLink="/size-guide">Check the size guide ↗</a>
+        <p class="muted">Sample prices and fabric details. Confirm before ordering.</p>
+      </div>
+    </div>
+  } @else {
+    <div class="empty">
+      <h1>We couldn't find this dress.</h1>
+      <a routerLink="/" class="btn">Browse the collection</a>
+    </div>
+  }
+</section>

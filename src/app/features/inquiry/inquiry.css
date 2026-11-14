@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+.form-image {
+  border-radius: 3px 70px 3px 3px;
+}
+form .btn {
+  width: 100%;
+}
+
+.measurements {
+  border: 1px solid var(--line);
+  padding: 18px;
+  margin: 0 0 24px;
+}
+.measurements legend {
+  font-size: 12px;
+  padding: 0 6px;
+}
+.measurement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (max-width: 420px) {
+  .measurement-grid {
+    grid-template-columns: 1fr;
+  }
+}

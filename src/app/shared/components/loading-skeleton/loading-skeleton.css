@@ -1,0 +1,28 @@
+.skeleton-photo,
+.skeleton-line {
+  background: #e9e2d8;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.skeleton-photo {
+  aspect-ratio: 3/3.9;
+}
+.skeleton-line {
+  height: 12px;
+  margin-top: 15px;
+  width: 80%;
+}
+.skeleton-line.short {
+  width: 45%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-photo,
+  .skeleton-line {
+    animation: none;
+  }
+}
+:host {
+  display: block;
+}
+.skeleton-card {
+  min-width: 0;
+}

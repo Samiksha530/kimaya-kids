@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+.cart-summary {
+  text-align: left;
+}
+aside small {
+  color: var(--muted);
+}

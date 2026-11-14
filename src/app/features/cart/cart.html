@@ -1,0 +1,41 @@
+<section class="section inner-page">
+  <p class="eyebrow">YOUR SELECTION</p>
+  <h1>Shopping bag</h1>
+  @for (line of s.cart(); track line.id + line.size) {
+    <div class="cart-line">
+      <img
+        [src]="'/images/dress-' + product(line.id)?.image + '.webp'"
+        [alt]="product(line.id)?.name"
+      />
+      <div>
+        <a [routerLink]="['/products', line.id]"
+          ><h3>{{ product(line.id)?.name }}</h3></a
+        >
+        <p>{{ line.size }}</p>
+        <b>{{ product(line.id)?.price | currency: 'INR' : 'symbol' : '1.0-0' }}</b><br /><button
+          class="remove-line"
+          (click)="remove(line.id, line.size)"
+        >
+          Remove
+        </button>
+      </div>
+      <div class="quantity">
+        <button (click)="s.change(line, -1)" aria-label="Decrease quantity">−</button
+        ><span>{{ line.qty }}</span
+        ><button (click)="s.change(line, 1)" aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+  }
+  @if (s.cart().length) {
+    <div class="cart-summary">
+      <h2>Subtotal {{ s.total() | currency: 'INR' : 'symbol' : '1.0-0' }}</h2>
+      <p>Demo store · No payment will be collected.</p>
+      <a class="btn" routerLink="/checkout">Continue to checkout ↗</a>
+    </div>
+  } @else {
+    <div class="empty">
+      <h2>Your bag is empty.</h2>
+      <a class="btn" routerLink="/">Find a favourite ↗</a>
+    </div>
+  }
+</section>

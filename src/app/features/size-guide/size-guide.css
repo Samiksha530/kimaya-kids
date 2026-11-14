@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+caption {
+  text-align: left;
+  font-size: 12px;
+  padding-bottom: 12px;
+  color: var(--muted);
+}

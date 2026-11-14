@@ -1,0 +1,46 @@
+<section class="section inner-page">
+  <p class="eyebrow">DEMO CHECKOUT</p>
+  <h1>Where should it go?</h1>
+  <p>This example order stays on your device. No payment is collected.</p>
+  @if (success()) {
+    <div class="success" role="status">
+      <h2>Demo order saved</h2>
+      <p>Reference: {{ success() }}</p>
+      <a routerLink="/" class="btn">Continue exploring</a>
+    </div>
+  } @else {
+    <div class="form-layout">
+      <form [formGroup]="form" (ngSubmit)="submit('order')">
+        <label>Parent's name<input formControlName="name" autocomplete="name" /></label
+        ><label>Email<input formControlName="email" type="email" autocomplete="email" /></label
+        ><label>Mobile number<input formControlName="phone" type="tel" autocomplete="tel" /></label
+        ><label
+          >Delivery address and PIN code<textarea
+            formControlName="details"
+            autocomplete="street-address"
+          ></textarea>
+        </label>
+        @if (attempted() && form.invalid) {
+          <p class="error" role="alert">
+            Enter a name, valid email, 10-digit Indian mobile number and address of at least 10
+            characters.
+          </p>
+        }
+        <button class="btn" type="submit">
+          Place demo order · {{ s.total() | currency: 'INR' : 'symbol' : '1.0-0' }}
+        </button>
+      </form>
+      <aside>
+        <h2>Order summary</h2>
+        @for (l of s.cart(); track l.id + l.size) {
+          <p>
+            {{ product(l.id)?.name }} × {{ l.qty }}<br /><small>{{ l.size }}</small>
+          </p>
+        }
+        <hr />
+        <h3>Total {{ s.total() | currency: 'INR' : 'symbol' : '1.0-0' }}</h3>
+        <p>No online payment in this demo.</p>
+      </aside>
+    </div>
+  }
+</section>

@@ -1,0 +1,143 @@
+.product-photo {
+  position: relative;
+  overflow: hidden;
+  background: #f0e7d9;
+  aspect-ratio: 3/3.9;
+  border-radius: 4px;
+}
+.photo-link {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: block;
+}
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s;
+}
+.product-card:hover .product-photo img {
+  transform: scale(1.035);
+}
+.tag {
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  background: #fffaf1e8;
+  padding: 4px 9px;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+.heart {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  width: 30px;
+  height: 30px;
+  background: #fffaf2ed;
+  border: 0;
+  border-radius: 50%;
+  font-size: 21px;
+  line-height: 1;
+}
+.saved {
+  color: #a84c59;
+}
+.quick {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: #fffaf2ed;
+  border: 0;
+  padding: 10px;
+  font-size: 10px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.product-card:hover .quick,
+.product-card:focus-within .quick {
+  opacity: 1;
+}
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7px;
+  letter-spacing: 1px;
+  margin: 14px 0 5px;
+  color: #9b8c7c;
+}
+.rating {
+  color: #9e7e45;
+  letter-spacing: 0;
+}
+.product-name {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+}
+.price {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.price span {
+  font-size: 8px;
+  color: #9b9188;
+  margin-left: 9px;
+}
+@media (max-width: 760px) {
+  .quick {
+    opacity: 1;
+    font-size: 8px;
+    padding: 8px;
+  }
+  .product-name {
+    font-size: 11px;
+  }
+  .price span {
+    display: block;
+    margin-left: 0;
+    margin-top: 2px;
+  }
+  .tag {
+    font-size: 6px;
+    padding: 3px 5px;
+    left: 8px;
+  }
+  .heart {
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+    right: 7px;
+  }
+}
+@media (max-width: 420px) {
+  .product-meta {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+  }
+  .rating {
+    display: none;
+  }
+}
+.quick {
+  text-align: center;
+}
+.product-name {
+  display: block;
+}
+:host {
+  display: block;
+}
+.heart:focus-visible {
+  outline-offset: 2px;
+}
+.product-name:hover {
+  color: var(--rose);
+}

@@ -1,0 +1,18 @@
+<section class="section inner-page">
+  <p class="eyebrow">SAVED FOR ANOTHER DAY</p>
+  <h1>Your favourites</h1>
+  <p>Keep a few options together while you decide.</p>
+  <div class="product-grid">
+    @for (p of s.products(); track p.id) {
+      @if (s.wish().includes(p.id)) {
+        <product-card [p]="p" />
+      }
+    }
+  </div>
+  @if (!s.wish().length) {
+    <div class="empty">
+      <h2>No favourites saved yet.</h2>
+      <a class="btn" routerLink="/">Explore the collection ↗</a>
+    </div>
+  }
+</section>

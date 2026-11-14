@@ -1,0 +1,131 @@
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span></span> THE FESTIVE COLLECTION</p>
+    <h1>Little twirls.<br />Timeless <em>traditions.</em></h1>
+    <p>
+      Brocade frocks, bright lehengas and golden details.<br />Traditional outfits for their next
+      family celebration.
+    </p>
+    <a href="#collection" class="btn">Explore Traditional Wear <span>↗</span></a>
+    <div class="hero-note"><span>✧</span> Made with love. Worn with joy.</div>
+    <div class="collection-note">
+      COLLECTION No. 01 <span>Frocks & festive sets · 6 months–5 years</span>
+    </div>
+  </div>
+  <div class="hero-art">
+    <img src="/images/dress-1.webp" alt="Olive and gold festive girls dress" fetchpriority="high" />
+    <div class="hero-stamp">little outfits<br /><b>BIG JOY</b><br />✧</div>
+    <div class="image-caption">A touch of heritage. A whole lot of heart.</div>
+  </div>
+</section>
+<div class="benefits">
+  <span>✧ <b>Thoughtfully designed</b> for little ones</span
+  ><span>♧ <b>Find their fit,</b> with our size guide</span
+  ><span>✿ <b>Indian roots.</b> Little modern twists.</span
+  ><span>♡ <b>Made for</b> memory-making</span>
+</div>
+<section class="collection section" id="collection">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">FROCKS, LEHENGAS & A LITTLE FESTIVE COLOUR</p>
+      <h2>The Traditional Edit <span>✧</span></h2>
+      <p>Festive little favourites for every special occasion.</p>
+    </div>
+    <a routerLink="/custom" class="text-link">Something made just for you ↗</a>
+  </div>
+  <div class="collection-controls">
+    <div class="tabs">
+      @for (t of ['All Traditional', 'Frocks', 'Lehengas']; track t) {
+        <button [class.selected]="type() === t" (click)="type.set(t)">
+          {{ t }}
+          @if (t === 'All Traditional') {
+            <small>{{ s.products().length }}</small>
+          }
+        </button>
+      }
+    </div>
+    <div class="filter-controls">
+      <label class="sr-only" for="search">Search dresses</label
+      ><input
+        id="search"
+        placeholder="Search dresses…"
+        [value]="query()"
+        (input)="query.set(search.value)"
+        #search
+      /><select
+        aria-label="Filter by color"
+        [value]="color()"
+        (change)="color.set(colour.value)"
+        #colour
+      >
+        <option value="">All colours</option>
+        @for (c of ['Olive', 'Yellow', 'Pink', 'Green', 'Teal', 'Purple', 'Red']; track c) {
+          <option>{{ c }}</option>
+        }</select
+      ><select
+        aria-label="Sort products"
+        [value]="sort()"
+        (change)="sort.set(sorting.value)"
+        #sorting
+      >
+        <option value="featured">Sort: Featured</option>
+        <option value="low">Price: Low to high</option>
+        <option value="high">Price: High to low</option>
+      </select>
+    </div>
+  </div>
+  <div class="results-label">
+    <span>{{ filtered().length }} lovely little finds</span
+    ><span>Made for their happiest days ♡</span>
+  </div>
+  @if (catalog.loading()) {
+    <loading-skeleton />
+  } @else if (catalog.error()) {
+    <div class="empty" role="alert">
+      <h3>The collection could not be loaded</h3>
+      <p>{{ catalog.error() }}</p>
+      <button class="btn" (click)="catalog.load()">Try again</button>
+    </div>
+  } @else {
+    <div class="product-grid">
+      @for (p of filtered(); track p.id) {
+        <product-card [p]="p" />
+      } @empty {
+        <div class="empty">
+          <h3>No little finds just yet</h3>
+          <p>Try another colour or search.</p>
+          <button class="btn" (click)="reset()">Reset filters</button>
+        </div>
+      }
+    </div>
+  }
+</section>
+<section class="custom-banner">
+  <span class="decor">✿</span>
+  <div>
+    <p class="eyebrow">AS UNIQUE AS YOUR LITTLE ONE</p>
+    <h2>A little dream. A dress of their own.</h2>
+    <p>Have a colour, a celebration or a tiny wish in mind? Let's create it together.</p>
+  </div>
+  <a class="btn outline" routerLink="/custom">Create something special ↗</a>
+</section>
+<section class="story-section section">
+  <img src="/images/dress-13.webp" alt="Pink and gold traditional lehenga" loading="lazy" />
+  <div>
+    <p class="eyebrow">THE HEART BEHIND KIMAYA</p>
+    <h2>A wardrobe for<br />family celebrations.</h2>
+    <p>
+      We believe little clothes can hold big feelings. Kimaya Kids brings the beauty of Indian
+      traditions to outfits made for play, celebration and the sweetest growing-up memories.
+    </p>
+    <a class="text-link" routerLink="/about">Get to know us ↗</a>
+    <div class="story-values">
+      ✿ Thoughtful details &nbsp; ♡ Little comforts &nbsp; ✧ Lasting memories
+    </div>
+  </div>
+</section>
+<section class="love-note">
+  <p class="eyebrow">LITTLE STYLES, BIG SMILES</p>
+  <h2>For their first festivities.<br />And every twirl after.</h2>
+  <a routerLink="/appointment" class="text-link">Let's plan their special outfit ↗</a>
+</section>

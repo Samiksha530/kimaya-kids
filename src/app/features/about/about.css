@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+.gallery a {
+  overflow: hidden;
+  border-radius: 3px;
+}
+.gallery img {
+  display: block;
+}
